@@ -7,14 +7,10 @@ module.exports = {
   messages: {
     // a function which produces all the messages
     get: function (cb) {
-      var arr = [];
       // db.dbConnection.connect();
       db.dbConnection.query('select * from messages', [], function(err,rows){
         if(err){throw err;}
-        for(var i in rows){
-          arr.push(rows[i]);
-        }
-        cb(arr);
+        cb(rows);
       });
       // db.dbConnection.end();
     },
@@ -31,14 +27,10 @@ module.exports = {
   users: {
     // Ditto as above.
     get: function (cb) {
-      var arr = [];
       // db.dbConnection.connect();
       db.dbConnection.query('select * from users', [], function(err,rows){
         if(err){throw err;}
-        for(var i in rows){
-          arr.push(rows[i]);
-        }
-        cb(arr);
+        cb(rows);
       });
       // db.dbConnection.end();
     },
