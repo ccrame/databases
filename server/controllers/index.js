@@ -8,7 +8,7 @@ module.exports = {
     get: function (req, res) {
       // return new Bluebird(function(resolve, reject) {
       models.messages.get(function(arr) {
-        res.end(arr);
+        res.send(arr);
       });
       // });
     }, // a function which handles a get request for all messages
@@ -23,10 +23,8 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {
-      return new Bluebird(function(resolve, reject) {
-        models.users.get(function(arr) {
-          resolve(arr,res);
-        });
+      models.users.get(function(arr) {
+        res.send(arr);
       });
     },
     post: function (req, res) {
